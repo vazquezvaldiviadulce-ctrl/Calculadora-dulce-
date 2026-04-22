@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Beauty Studio Dulce Vázquez</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap');
+  
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffeef8 0%, #ffd6eb 100%);
+    color: #5a3d5c;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  
+  .container {
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(255, 182, 217, 0.4);
+    overflow: hidden;
+    border: 2px solid #ffb6d9;
+  }
+  
+  .header {
+    background: linear-gradient(135deg, #ff9ecd 0%, #ffb6d9 100%);
+    padding: 0;
+    text-align: center;
+    color: white;
+    position: relative;
+  }
+  
+  .logo-banner {
+    width: 100%;
+    display: block;
+  }
+  
+  .content { padding: 25px 20px; }
+  
+  .section { margin-bottom: 25px; }
+  
+  .section-title {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: #d94f9f;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  select, input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ffd6eb;
+    border-radius: 12px;
+    font-size: 15px;
+    background: #fff9fc;
+    color: #5a3d5c;
+    transition: all 0.3s;
+  }
+  
+  select:focus, input:focus {
+    outline: none;
+    border-color: #ff9ecd;
+    box-shadow: 0 0 0 3px rgba(255, 158, 205, 0.2);
+  }
+  
+  .checkbox-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 5px;
+  }
+  
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background
