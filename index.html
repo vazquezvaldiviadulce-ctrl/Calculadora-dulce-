@@ -1,87 +1,120 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculadora Beauty Studio Dulce Vázquez</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap');
-  
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-  
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #ffeef8 0%, #ffd6eb 100%);
-    color: #5a3d5c;
-    padding: 20px;
-    min-height: 100vh;
-  }
-  
-  .container {
-    max-width: 500px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(255, 182, 217, 0.4);
-    overflow: hidden;
-    border: 2px solid #ffb6d9;
-  }
-  
-  .header {
-    background: linear-gradient(135deg, #ff9ecd 0%, #ffb6d9 100%);
-    padding: 0;
-    text-align: center;
-    color: white;
-    position: relative;
-  }
-  
-  .logo-banner {
-    width: 100%;
-    display: block;
-  }
-  
-  .content { padding: 25px 20px; }
-  
-  .section { margin-bottom: 25px; }
-  
-  .section-title {
-    font-weight: 600;
-    font-size: 16px;
-    margin-bottom: 12px;
-    color: #d94f9f;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  select, input[type="number"] {
-    width: 100%;
-    padding: 12px;
-    border: 2px solid #ffd6eb;
-    border-radius: 12px;
-    font-size: 15px;
-    background: #fff9fc;
-    color: #5a3d5c;
-    transition: all 0.3s;
-  }
-  
-  select:focus, input:focus {
-    outline: none;
-    border-color: #ff9ecd;
-    box-shadow: 0 0 0 3px rgba(255, 158, 205, 0.2);
-  }
-  
-  .checkbox-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    max-height: 300px;
-    overflow-y: auto;
-    padding-right: 5px;
-  }
-  
-  .check-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    background
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Beauty Studio Dulce 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffd6eb 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            color: #5a3d5c;
+        }
+        .calculadora {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            border-radius: 25px;
+            padding: 30px 25px;
+            box-shadow: 0 10px 35px rgba(255, 105, 180, 0.2);
+            border: 2px solid rgba(255,255,255,0.5);
+            width: 100%;
+            max-width: 360px;
+        }
+        .titulo {
+            text-align: center;
+            color: #d147a3;
+            margin-bottom: 25px;
+            font-weight: 600;
+            font-size: 1.4rem;
+        }
+        #pantalla {
+            width: 100%;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.6);
+            border: 2px solid #ffc0cb;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            color: #d147a3;
+            font-size: 2.2rem;
+            text-align: right;
+            padding: 0 20px;
+            font-weight: 600;
+        }
+        .botones {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        button {
+            height: 65px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.4rem;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            background: rgba(255,255,255,0.8);
+            color: #d147a3;
+            font-weight: 600;
+            transition: 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        button:active { transform: scale(0.92); }
+        .operador { background: #ff69b4; color: white; }
+        .igual { background: #d147a3; color: white; grid-column: span 2; }
+        .limpiar { background: #ffc0cb; color: #d147a3; }
+    </style>
+</head>
+<body>
+    <div class="calculadora">
+        <h2 class="titulo">Beauty Studio Dulce 💖</h2>
+        <input type="text" id="pantalla" disabled placeholder="0">
+        <div class="botones">
+            <button class="limpiar" onclick="limpiar()">C</button>
+            <button onclick="borrar()">←</button>
+            <button class="operador" onclick="agregar('%')">%</button>
+            <button class="operador" onclick="agregar('/')">÷</button>
+            
+            <button onclick="agregar('7')">7</button>
+            <button onclick="agregar('8')">8</button>
+            <button onclick="agregar('9')">9</button>
+            <button class="operador" onclick="agregar('*')">×</button>
+            
+            <button onclick="agregar('4')">4</button>
+            <button onclick="agregar('5')">5</button>
+            <button onclick="agregar('6')">6</button>
+            <button class="operador" onclick="agregar('-')">-</button>
+            
+            <button onclick="agregar('1')">1</button>
+            <button onclick="agregar('2')">2</button>
+            <button onclick="agregar('3')">3</button>
+            <button class="operador" onclick="agregar('+')">+</button>
+            
+            <button onclick="agregar('0')">0</button>
+            <button onclick="agregar('.')">.</button>
+            <button class="igual" onclick="calcular()">=</button>
+        </div>
+    </div>
+    <script>
+        let pantalla = document.getElementById('pantalla');
+        function agregar(valor) { pantalla.value += valor; }
+        function limpiar() { pantalla.value = ''; }
+        function borrar() { pantalla.value = pantalla.value.slice(0, -1); }
+        function calcular() {
+            try { 
+                let resultado = eval(pantalla.value.replace('×', '*').replace('÷', '/'));
+                pantalla.value = resultado; 
+            } catch { 
+                pantalla.value = 'Error'; 
+                setTimeout(() => { pantalla.value = ''; }, 1000);
+            }
+        }
+    </script>
+</body>
+</html>
