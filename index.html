@@ -3,118 +3,359 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Beauty Studio Dulce 💖</title>
+    <title>Beauty Studio Dulce - Cotizador</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ffeef8 0%, #ffd6eb 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
             min-height: 100vh;
-            padding: 20px;
-            color: #5a3d5c;
+            padding: 15px;
         }
-        .calculadora {
+     .container {
+            max-width: 500px;
+            margin: 0 auto;
             background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(12px);
-            border-radius: 25px;
-            padding: 30px 25px;
-            box-shadow: 0 10px 35px rgba(255, 105, 180, 0.2);
-            border: 2px solid rgba(255,255,255,0.5);
-            width: 100%;
-            max-width: 360px;
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(255, 154, 158, 0.3);
         }
-        .titulo {
+        h1 {
             text-align: center;
-            color: #d147a3;
-            margin-bottom: 25px;
-            font-weight: 600;
-            font-size: 1.4rem;
+            color: #d63384;
+            margin-bottom: 5px;
+            font-size: 24px;
         }
-        #pantalla {
+     .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            color: #d63384;
+            font-weight: 600;
+            margin: 12px 0 5px;
+            font-size: 14px;
+        }
+        select, input[type="number"] {
             width: 100%;
-            height: 80px;
+            padding: 10px;
+            border: 2px solid #ffb3d9;
+            border-radius: 10px;
+            font-size: 16px;
+            background: white;
+        }
+     .largos { display: none; }
+     .largos.show { display: block; }
+     .decoraciones {
             background: rgba(255, 255, 255, 0.6);
-            border: 2px solid #ffc0cb;
-            border-radius: 15px;
-            margin-bottom: 25px;
-            color: #d147a3;
-            font-size: 2.2rem;
-            text-align: right;
-            padding: 0 20px;
-            font-weight: 600;
+            border-radius: 12px;
+            padding: 12px;
+            margin: 10px 0;
+            max-height: 300px;
+            overflow-y: auto;
         }
-        .botones {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
+     .deco-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #ffb3d9;
         }
-        button {
-            height: 65px;
+     .deco-item:last-child { border-bottom: none; }
+     .deco-name { font-size: 13px; color: #333; }
+     .deco-price { font-size: 11px; color: #d63384; font-weight: 600; }
+     .deco-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+     .deco-controls button {
+            width: 28px;
+            height: 28px;
             border: none;
-            border-radius: 15px;
-            font-size: 1.4rem;
-            font-family: 'Poppins', sans-serif;
+            background: #d63384;
+            color: white;
+            border-radius: 6px;
+            font-size: 18px;
             cursor: pointer;
-            background: rgba(255,255,255,0.8);
-            color: #d147a3;
-            font-weight: 600;
-            transition: 0.2s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
-        button:active { transform: scale(0.92); }
-        .operador { background: #ff69b4; color: white; }
-        .igual { background: #d147a3; color: white; grid-column: span 2; }
-        .limpiar { background: #ffc0cb; color: #d147a3; }
+     .deco-controls span {
+            min-width: 25px;
+            text-align: center;
+            font-weight: 600;
+        }
+     .extras {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 10px 0;
+        }
+     .extra-box {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 10px;
+            border-radius: 10px;
+        }
+     .extra-box label { margin: 0 0 5px; font-size: 12px; }
+     .total-box {
+            background: linear-gradient(135deg, #d63384, #ff6b9d);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            text-align: center;
+        }
+     .total-label { font-size: 14px; opacity: 0.9; }
+     .total-amount {
+            font-size: 42px;
+            font-weight: 700;
+            margin: 5px 0;
+        }
+     .desglose {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 11px;
+            text-align: left;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+     .btn-reset {
+            width: 100%;
+            padding: 12px;
+            background: white;
+            color: #d63384;
+            border: 2px solid #d63384;
+            border-radius: 10px;
+            font-weight: 600;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        small { color: #888; font-size: 10px; }
     </style>
 </head>
 <body>
-    <div class="calculadora">
-        <h2 class="titulo">Beauty Studio Dulce 💖</h2>
-        <input type="text" id="pantalla" disabled placeholder="0">
-        <div class="botones">
-            <button class="limpiar" onclick="limpiar()">C</button>
-            <button onclick="borrar()">←</button>
-            <button class="operador" onclick="agregar('%')">%</button>
-            <button class="operador" onclick="agregar('/')">÷</button>
-            
-            <button onclick="agregar('7')">7</button>
-            <button onclick="agregar('8')">8</button>
-            <button onclick="agregar('9')">9</button>
-            <button class="operador" onclick="agregar('*')">×</button>
-            
-            <button onclick="agregar('4')">4</button>
-            <button onclick="agregar('5')">5</button>
-            <button onclick="agregar('6')">6</button>
-            <button class="operador" onclick="agregar('-')">-</button>
-            
-            <button onclick="agregar('1')">1</button>
-            <button onclick="agregar('2')">2</button>
-            <button onclick="agregar('3')">3</button>
-            <button class="operador" onclick="agregar('+')">+</button>
-            
-            <button onclick="agregar('0')">0</button>
-            <button onclick="agregar('.')">.</button>
-            <button class="igual" onclick="calcular()">=</button>
+    <div class="container">
+        <h1>Beauty Studio Dulce 💖</h1>
+        <p class="subtitle">Cotizador de Uñas</p>
+        
+        <label>Técnica Base:</label>
+        <select id="tecnica">
+            <option value="0">Selecciona una técnica</option>
+            <option value="acrilico">Acrílico / Soft Gel</option>
+            <option value="gel">Gel Semipermanente - $150</option>
+            <option value="rubber">Rubber Gel - $200</option>
+        </select>
+
+        <div id="largos" class="largos">
+            <label>Largo:</label>
+            <select id="largo">
+                <option value="200">Largo 1 - $200</option>
+                <option value="220">Largo 2 - $220</option>
+                <option value="240">Largo 3 - $240</option>
+                <option value="260">Largo 4 - $260</option>
+                <option value="300">Largo 5 - $300</option>
+                <option value="320">Largo 6 - $320</option>
+                <option value="350">Largo 7 - $350</option>
+                <option value="400">Largo 8 - $400</option>
+                <option value="430">Largo 9 - $430</option>
+            </select>
         </div>
+
+        <label>Tonos Extra <small>(Incluye 2 gratis, $5 c/u extra)</small>:</label>
+        <input type="number" id="tonos" min="0" value="0" placeholder="¿Cuántos tonos extra?">
+
+        <label>Decoraciones <small>(Precio por uña)</small>:</label>
+        <div class="decoraciones" id="decoraciones"></div>
+
+        <label>Extras:</label>
+        <div class="extras">
+            <div class="extra-box">
+                <label>Cambio de forma $20</label>
+                <input type="checkbox" id="forma">
+            </div>
+            <div class="extra-box">
+                <label>Retiro Acrílico $10/uña</label>
+                <input type="number" id="retiroAcrilico" min="0" value="0" placeholder="Uñas">
+            </div>
+            <div class="extra-box">
+                <label>Retiro Gel $8/uña</label>
+                <input type="number" id="retiroGel" min="0" value="0" placeholder="Uñas">
+            </div>
+            <div class="extra-box">
+                <label>Reposición Acrílico $30/uña</label>
+                <input type="number" id="repoAcrilico" min="0" value="0" placeholder="Uñas">
+            </div>
+            <div class="extra-box">
+                <label>Reposición Gel $20/uña</label>
+                <input type="number" id="repoGel" min="0" value="0" placeholder="Uñas">
+            </div>
+        </div>
+
+        <div class="total-box">
+            <div class="total-label">TOTAL A COBRAR</div>
+            <div class="total-amount" id="total">$0</div>
+            <div class="desglose" id="desglose"></div>
+        </div>
+
+        <button class="btn-reset" onclick="resetear()">Limpiar Todo</button>
     </div>
+
     <script>
-        let pantalla = document.getElementById('pantalla');
-        function agregar(valor) { pantalla.value += valor; }
-        function limpiar() { pantalla.value = ''; }
-        function borrar() { pantalla.value = pantalla.value.slice(0, -1); }
-        function calcular() {
-            try { 
-                let resultado = eval(pantalla.value.replace('×', '*').replace('÷', '/'));
-                pantalla.value = resultado; 
-            } catch { 
-                pantalla.value = 'Error'; 
-                setTimeout(() => { pantalla.value = ''; }, 1000);
-            }
+        const decoraciones = [
+            { nombre: 'Espejo', precio: 5 },
+            { nombre: 'Aurora', precio: 5 },
+            { nombre: 'Azúcar', precio: 5 },
+            { nombre: 'Suéter', precio: 5 },
+            { nombre: 'Perla', precio: 5 },
+            { nombre: 'Glitter', precio: 5 },
+            { nombre: 'Carey', precio: 15 },
+            { nombre: 'Blooming', precio: 5 },
+            { nombre: 'Ojo de gato', precio: 5 },
+            { nombre: 'Relieve', precio: 15 },
+            { nombre: '3D', precio: 15 },
+            { nombre: 'Francés', precio: 5 },
+            { nombre: 'Nail art simple', precio: 5 },
+            { nombre: 'Nail art complicado', precio: 15 },
+            { nombre: 'Encapsulado', precio: 10 },
+            { nombre: 'Naturaleza muerta', precio: 10 },
+            { nombre: 'Dijes', precio: 15 },
+            { nombre: 'Sticker', precio: 5 },
+            { nombre: 'Baby boomer', precio: 15 },
+            { nombre: 'Cristales Ch', precio: 20 },
+            { nombre: 'Cristales M', precio: 30 },
+            { nombre: 'Cristales G', precio: 40 },
+            { nombre: 'Uña cristal Ch L1-3', precio: 50 },
+            { nombre: 'Uña cristal M L4-6', precio: 80 },
+            { nombre: 'Uña cristal G L7-9', precio: 100 }
+        ];
+
+        const cantidades = {};
+        decoraciones.forEach(d => cantidades[d.nombre] = 0);
+
+        function init() {
+            const cont = document.getElementById('decoraciones');
+            decoraciones.forEach(d => {
+                const div = document.createElement('div');
+                div.className = 'deco-item';
+                div.innerHTML = `
+                    <div>
+                        <div class="deco-name">${d.nombre}</div>
+                        <div class="deco-price">$${d.precio} por uña</div>
+                    </div>
+                    <div class="deco-controls">
+                        <button onclick="cambiar('${d.nombre}', -1)">-</button>
+                        <span id="cant-${d.nombre}">0</span>
+                        <button onclick="cambiar('${d.nombre}', 1)">+</button>
+                    </div>
+                `;
+                cont.appendChild(div);
+            });
         }
+
+        function cambiar(nombre, delta) {
+            cantidades[nombre] = Math.max(0, cantidades[nombre] + delta);
+            document.getElementById(`cant-${nombre}`).textContent = cantidades[nombre];
+            calcular();
+        }
+
+        document.getElementById('tecnica').addEventListener('change', (e) => {
+            document.getElementById('largos').classList.toggle('show', e.target.value === 'acrilico');
+            calcular();
+        });
+
+        document.querySelectorAll('input, select').forEach(el => {
+            el.addEventListener('input', calcular);
+            el.addEventListener('change', calcular);
+        });
+
+        function calcular() {
+            let total = 0;
+            let desglose = [];
+            
+            const tecnica = document.getElementById('tecnica').value;
+            if (tecnica === 'acrilico') {
+                const largo = parseInt(document.getElementById('largo').value);
+                total += largo;
+                desglose.push(`Acrílico/Soft Gel: $${largo}`);
+            } else if (tecnica === 'gel') {
+                total += 150;
+                desglose.push(`Gel Semipermanente: $150`);
+            } else if (tecnica === 'rubber') {
+                total += 200;
+                desglose.push(`Rubber Gel: $200`);
+            }
+
+            const tonos = parseInt(document.getElementById('tonos').value) || 0;
+            if (tonos > 0) {
+                const costoTonos = tonos * 5;
+                total += costoTonos;
+                desglose.push(`${tonos} tonos extra: $${costoTonos}`);
+            }
+
+            decoraciones.forEach(d => {
+                if (cantidades[d.nombre] > 0) {
+                    const subtotal = cantidades[d.nombre] * d.precio;
+                    total += subtotal;
+                    desglose.push(`${d.nombre} x${cantidades[d.nombre]}: $${subtotal}`);
+                }
+            });
+
+            if (document.getElementById('forma').checked) {
+                total += 20;
+                desglose.push(`Cambio de forma: $20`);
+            }
+
+            const retiroA = parseInt(document.getElementById('retiroAcrilico').value) || 0;
+            if (retiroA > 0) {
+                total += retiroA * 10;
+                desglose.push(`Retiro Acrílico x${retiroA}: $${retiroA * 10}`);
+            }
+
+            const retiroG = parseInt(document.getElementById('retiroGel').value) || 0;
+            if (retiroG > 0) {
+                total += retiroG * 8;
+                desglose.push(`Retiro Gel x${retiroG}: $${retiroG * 8}`);
+            }
+
+            const repoA = parseInt(document.getElementById('repoAcrilico').value) || 0;
+            if (repoA > 0) {
+                total += repoA * 30;
+                desglose.push(`Reposición Acrílico x${repoA}: $${repoA * 30}`);
+            }
+
+            const repoG = parseInt(document.getElementById('repoGel').value) || 0;
+            if (repoG > 0) {
+                total += repoG * 20;
+                desglose.push(`Reposición Gel x${repoG}: $${repoG * 20}`);
+            }
+
+            document.getElementById('total').textContent = `$${total}`;
+            document.getElementById('desglose').innerHTML = desglose.length? desglose.join('<br>') : 'Selecciona servicios';
+        }
+
+        function resetear() {
+            document.getElementById('tecnica').value = '0';
+            document.getElementById('largos').classList.remove('show');
+            document.getElementById('tonos').value = 0;
+            document.getElementById('forma').checked = false;
+            document.getElementById('retiroAcrilico').value = 0;
+            document.getElementById('retiroGel').value = 0;
+            document.getElementById('repoAcrilico').value = 0;
+            document.getElementById('repoGel').value = 0;
+            decoraciones.forEach(d => {
+                cantidades[d.nombre] = 0;
+                document.getElementById(`cant-${d.nombre}`).textContent = 0;
+            });
+            calcular();
+        }
+
+        init();
+        calcular();
     </script>
 </body>
-</html>
+                    </html>
